@@ -1,0 +1,36 @@
+
+class User {
+    void displayRole() {
+        System.out.println("I am a general user.");
+    }
+}
+
+class Admin extends User {
+    @Override
+    void displayRole() {
+        System.out.println("I am an Admin with full access.");
+    }
+}
+
+class Guest extends User {
+    @Override
+    void displayRole() {
+        System.out.println("I am a Guest with limited access.");
+    }
+}
+
+public class PolymorphismDemo {
+    
+    // Method that accepts superclass reference
+    static void printUserRole(User u) {
+        u.displayRole(); // Polymorphic call
+    }
+    
+    public static void main(String[] args) {
+        User admin = new Admin();
+        User guest = new Guest();
+        
+        printUserRole(admin);  // Calls Admin’s displayRole()
+        printUserRole(guest);  // Calls Guest’s displayRole()
+    }
+}
